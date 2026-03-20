@@ -18,9 +18,9 @@
   const CONFIG = {
     count: 80,
     maxDist: 140,
-    speed: 0.4,
-    color: 'rgba(160,180,210,',
-    lineColor: 'rgba(100,130,180,',
+    speed: 0.75,
+    color: 'rgba(255,255,255,',
+    lineColor: 'rgba(255,255,255,',
     radius: 2,
   };
 
