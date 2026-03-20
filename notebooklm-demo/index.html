@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NotebookLM x AntiGravity | Research-to-Build</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Outfit:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="background-blobs">
+        <div class="blob blob-1"></div>
+        <div class="blob blob-2"></div>
+        <div class="blob blob-3"></div>
+    </div>
+
+    <main class="glass-container">
+        <header>
+            <div class="logo">
+                <span class="icon">🚀</span>
+                <h1>Research-to-Build</h1>
+            </div>
+            <p class="subtitle">NotebookLM Integration Pipeline</p>
+        </header>
+
+        <section class="pipeline-status">
+            <div class="step active" id="step-research">
+                <div class="step-icon">🔍</div>
+                <div class="step-label">Research</div>
+            </div>
+            <div class="connector"></div>
+            <div class="step" id="step-plan">
+                <div class="step-icon">📋</div>
+                <div class="step-label">Plan</div>
+            </div>
+            <div class="connector"></div>
+            <div class="step" id="step-build">
+                <div class="step-icon">🛠️</div>
+                <div class="step-label">Build</div>
+            </div>
+        </section>
+
+        <section class="content-area">
+            <div class="card glass" id="discovery-card">
+                <h2>Source Discovery</h2>
+                <p>NotebookLM is analyzing your trusted data...</p>
+                <div class="sources-list" id="sources-list">
+                    <!-- Dynamic sources will appear here -->
+                </div>
+                <button class="btn-primary" id="start-research-btn">Query NotebookLM</button>
+            </div>
+
+            <div class="card glass hidden" id="plan-card">
+                <h2>Implementation Plan</h2>
+                <div class="plan-preview" id="plan-preview">
+                    <!-- Planned steps will appear here -->
+                </div>
+                <button class="btn-primary" id="start-build-btn">Generate App</button>
+            </div>
+
+            <div class="card glass hidden" id="build-card">
+                <h2>Build Output</h2>
+                <div class="build-preview" id="build-preview">
+                    <div class="skeleton-loader"></div>
+                    <div class="skeleton-loader short"></div>
+                </div>
+                <div class="success-message hidden" id="success-msg">
+                    ✨ Your app is ready based on NotebookLM insights!
+                </div>
+            </div>
+        </section>
+
+        <footer>
+            <p>Connected via Model Context Protocol (MCP)</p>
+        </footer>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>

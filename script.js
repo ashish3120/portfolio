@@ -141,6 +141,9 @@
 (function initNavbar() {
   const nav = document.getElementById('navbar');
   window.addEventListener('scroll', () => {
+    // Show navbar if scrolled > 100px
+    nav.classList.toggle('visible', window.scrollY > 100);
+    // Add background color shadow if scrolled further
     nav.classList.toggle('scrolled', window.scrollY > 60);
   });
 })();
@@ -148,14 +151,23 @@
 /* ── 5. ACTIVE NAV LINK (INTERSECTION) ───────────── */
 (function initActiveNav() {
   const sections = document.querySelectorAll('section[id]');
-  const links    = document.querySelectorAll('.nav-link');
+  const topLinks  = document.querySelectorAll('.nav-link');
+  const heroLinks = document.querySelectorAll('.hero-nav-link');
 
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
-        links.forEach(l => l.classList.remove('active'));
-        const active = document.querySelector(`.nav-link[href="#${entry.target.id}"]`);
-        if (active) active.classList.add('active');
+        // Clear all active classes
+        topLinks.forEach(l => l.classList.remove('active'));
+        heroLinks.forEach(l => l.classList.remove('active'));
+
+        // Highlight top nav
+        const activeTop = document.querySelector(`.nav-link[href="#${entry.target.id}"]`);
+        if (activeTop) activeTop.classList.add('active');
+
+        // Highlight hero nav
+        const activeHero = document.querySelector(`.hero-nav-link[href="#${entry.target.id}"]`);
+        if (activeHero) activeHero.classList.add('active');
       }
     });
   }, { threshold: 0.38 });

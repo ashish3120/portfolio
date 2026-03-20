@@ -54,7 +54,16 @@ body {
   backdrop-filter: blur(14px);
   border-bottom: 1px solid var(--border);
   height: var(--nav-h);
-  transition: background var(--transition);
+  transition: all 0.4s ease;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(-20px);
+}
+
+#navbar.visible {
+  opacity: 1;
+  pointer-events: all;
+  transform: translateY(0);
 }
 
 #navbar.scrolled {
@@ -190,10 +199,43 @@ body {
 
 @keyframes blink { 0%,100%{ opacity:1; } 50%{ opacity:0; } }
 
+.hero-nav {
+  list-style: none;
+  display: flex;
+  gap: 24px;
+  margin: 10px 0;
+  animation: fadeInUp 0.95s ease 0.3s both;
+}
+
+.hero-nav-link {
+  color: #fff;
+  text-decoration: none;
+  font-size: 0.95rem;
+  font-weight: 500;
+  position: relative;
+  transition: color var(--transition);
+}
+
+.hero-nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: -4px; left: 0; right: 0;
+  height: 2px;
+  background: var(--accent);
+  transform: scaleX(0);
+  transition: transform var(--transition);
+  transform-origin: left;
+}
+
+.hero-nav-link:hover::after,
+.hero-nav-link.active::after {
+  transform: scaleX(1);
+}
+
 .hero-socials {
   display: flex;
   gap: 14px;
-  margin-top: 10px;
+  margin-top: 15px;
   animation: fadeInUp 1s ease 0.4s both;
 }
 
