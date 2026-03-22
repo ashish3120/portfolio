@@ -90,9 +90,9 @@
   const el = document.getElementById('typed-text');
   const strings = [
     'Machine Learning Engineer',
-    'Generative AI Developer',
+    'Full-Stack Developer',
+    'AI Solutions Builder',
     'Deep Learning Enthusiast',
-    'RAG Pipeline Builder',
     'Python Developer',
   ];
   let si = 0, ci = 0, deleting = false;
