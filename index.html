@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Ashish Kumar Singh - Portfolio</title>
   <meta name="description"
-    content="Portfolio of Ashish Kumar Singh — Machine Learning Engineer, Full-Stack Developer & AI Solutions Builder" />
+    content="Portfolio of Ashish Kumar Singh — Machine Learning Engineer, Backend & API Developer & AI Solutions Builder" />
   <link rel="icon" type="image/png" href="favicon.png" />
   <link rel="apple-touch-icon" href="favicon.png" />
 
@@ -24,6 +24,10 @@
 </head>
 
 <body>
+
+  <!-- Custom Cursor -->
+  <div class="cursor-dot" id="cursor-dot"></div>
+  <div class="cursor-ring" id="cursor-ring"></div>
 
   <!-- ====== NAVBAR ====== -->
   <nav id="navbar">
@@ -45,27 +49,35 @@
   <!-- ====== HERO ====== -->
   <section id="hero">
     <canvas id="particles-canvas"></canvas>
-    <div class="hero-content">
-      <h1 class="hero-name">Ashish Kumar Singh</h1>
-      <p class="hero-subtitle">I'm a <span id="typed-text" class="typed-accent"></span><span
-          class="typed-cursor">|</span></p>
+    <div class="hero-inner">
+      <div class="hero-content">
+        <h1 class="hero-name">Ashish Kumar Singh</h1>
+        <p class="hero-subtitle">I'm a <span id="typed-text" class="typed-accent"></span><span
+            class="typed-cursor">|</span></p>
 
-      <!-- Hero Nav -->
-      <ul class="hero-nav">
-        <li><a href="#hero" class="hero-nav-link active">Home</a></li>
-        <li><a href="#about" class="hero-nav-link">About</a></li>
-        <li><a href="#resume" class="hero-nav-link">Resume</a></li>
-        <li><a href="#projects" class="hero-nav-link">Projects</a></li>
-        <li><a href="#contact" class="hero-nav-link">Contact</a></li>
-      </ul>
+        <!-- Hero Nav -->
+        <ul class="hero-nav">
+          <li><a href="#hero" class="hero-nav-link active">Home</a></li>
+          <li><a href="#about" class="hero-nav-link">About</a></li>
+          <li><a href="#resume" class="hero-nav-link">Resume</a></li>
+          <li><a href="#projects" class="hero-nav-link">Projects</a></li>
+          <li><a href="#contact" class="hero-nav-link">Contact</a></li>
+        </ul>
 
-      <div class="hero-socials">
-        <a href="mailto:ashishsingh66652@gmail.com" class="social-btn" title="Email"><i
-            class="bi bi-envelope-fill"></i></a>
-        <a href="https://github.com/ashish3120" target="_blank" class="social-btn" title="GitHub"><i
-            class="bi bi-github"></i></a>
-        <a href="https://www.linkedin.com/in/ashish-kumar-singh-71ab60289/" target="_blank" class="social-btn" title="LinkedIn"><i
-            class="bi bi-linkedin"></i></a>
+        <div class="hero-socials">
+          <a href="mailto:ashishsingh66652@gmail.com" class="social-btn" title="Email"><i
+              class="bi bi-envelope-fill"></i></a>
+          <a href="https://github.com/ashish3120" target="_blank" class="social-btn" title="GitHub"><i
+              class="bi bi-github"></i></a>
+          <a href="https://www.linkedin.com/in/ashish-kumar-singh-71ab60289/" target="_blank" class="social-btn" title="LinkedIn"><i
+              class="bi bi-linkedin"></i></a>
+          <a href="ashish_cv_main.docx" download class="btn-download-cv" title="Download CV"><i
+              class="bi bi-download"></i> Download CV</a>
+        </div>
+      </div>
+      <div class="hero-photo">
+        <div class="hero-photo-glow"></div>
+        <img src="profile-photo.png" alt="Ashish Kumar Singh" />
       </div>
     </div>
   </section>
@@ -78,8 +90,8 @@
         <img src="about-illustration.png" alt="Ashish Kumar Singh illustration" />
       </div>
       <div class="about-text">
-        <h2 class="about-title"><span class="accent">Machine Learning</span> <span class="accent2">Engineer &amp; Full-Stack
-            Developer</span></h2>
+        <h2 class="about-title"><span class="accent">Machine Learning</span> <span class="accent2">Engineer &amp; AI
+            Solutions Builder</span></h2>
         <p>Hi, I'm Ashish Kumar Singh, a Computer Science &amp; Engineering undergraduate at Lovely Professional
           University specialising in Machine Learning, Deep Learning, and AI-powered solutions.</p>
         <p>Built end-to-end ML systems including fraud detection, RAG pipelines, phishing detection, and healthcare
@@ -92,8 +104,8 @@
           interactive dashboards for non-technical stakeholders.</p>
         <p>Certified in LLM fundamentals (Infosys), online privacy (NPTEL), and computational theory — continuously
           exploring frontier AI research.</p>
-        <p>Proficient in Python, C++, C, and JavaScript — with a solid grounding in algorithms and data structures gained
-          through competitive programming.</p>
+        <p>Proficient in Python, C++, C, and JavaScript — with a solid grounding in algorithms and data structures.
+          Solved **200+ LeetCode problems**.</p>
       </div>
     </div>
 
@@ -137,7 +149,7 @@
           </div>
         </div>
         <div class="skill-item">
-          <div class="skill-header"><span class="skill-name">FULL-STACK (HTML, CSS, JS, REST APIs)</span><span
+          <div class="skill-header"><span class="skill-name">BACKEND &amp; APIs (FastAPI, REST, Django)</span><span
               class="skill-pct">82%</span></div>
           <div class="skill-bar">
             <div class="skill-fill" data-width="82"></div>
@@ -166,7 +178,7 @@
         <div class="interest-card"><span class="interest-icon" style="color:#fbbf24">🛡️</span><span
             class="interest-label">Fraud &amp; Security</span></div>
         <div class="interest-card"><span class="interest-icon" style="color:#4ade80">&lt;/&gt;</span><span
-            class="interest-label">Full-Stack Dev</span></div>
+            class="interest-label">API Development</span></div>
       </div>
     </div>
   </section>
@@ -175,6 +187,9 @@
   <section id="resume">
     <div class="section-label">RESUME <span class="label-line"></span></div>
     <h2 class="section-title">VIEW MY RESUME</h2>
+    <div class="resume-download-wrap">
+      <a href="ashish_cv_main.docx" download class="btn-download-cv-lg"><i class="bi bi-file-earmark-arrow-down"></i> Download My CV</a>
+    </div>
     <div class="resume-grid">
 
       <!-- LEFT -->
@@ -184,12 +199,12 @@
           <div class="resume-dot"></div>
           <h4 class="resume-item-title">ASHISH KUMAR SINGH</h4>
           <p class="resume-desc italic">Computer Science Engineering student at Lovely Professional University with
-            expertise in Machine Learning, Deep Learning, and Full-Stack Development. Passionate about building
+            expertise in Machine Learning, Deep Learning, and Backend API Development. Passionate about building
             AI-powered solutions with a focus on healthcare analytics, security applications, and retrieval-augmented
             generation systems. Proven track record of developing end-to-end ML projects with interactive dashboards
             and real-time prediction capabilities.</p>
           <ul class="resume-list">
-            <li>Jalandhar, Punjab, India</li>
+            <li>Ranchi, Jharkhand</li>
             <li>(+91) 9431369385</li>
             <li>ashishsingh66652@gmail.com</li>
           </ul>
@@ -203,7 +218,7 @@
           <p class="resume-org italic">Lovely Professional University, Phagwara, Punjab</p>
           <ul class="resume-list">
             <li>CGPA: 8.22 / 10</li>
-            <li>Focus on AI, Machine Learning &amp; Full-Stack Development.</li>
+            <li>Focus on AI, Machine Learning &amp; Backend Development.</li>
             <li>Projects spanning Fraud Detection, RAG Systems, Phishing Detection, and Healthcare Analytics.</li>
           </ul>
         </div>
@@ -318,7 +333,7 @@
           <div class="project-overlay">
             <h3>ScamShield Fraud Detection</h3>
             <div class="proj-links">
-              <a href="https://github.com/ashish3120/ScamShield-Fraud-Detection" target="_blank" class="project-link" title="GitHub"><i
+              <a href="https://github.com/ashish3120/scamshield-fraud-detection-ml" target="_blank" class="project-link" title="GitHub"><i
                   class="bi bi-github"></i></a>
             </div>
           </div>
@@ -336,7 +351,7 @@
           <div class="project-overlay">
             <h3>Personal Knowledge Base (RAG)</h3>
             <div class="proj-links">
-              <a href="https://github.com/ashish3120/Personal-Knowledge-Base-RAG" target="_blank"
+              <a href="https://github.com/ashish3120/ai_intelligence" target="_blank"
                 class="project-link" title="GitHub"><i class="bi bi-github"></i></a>
             </div>
           </div>
@@ -398,7 +413,7 @@
         <div class="contact-icon-wrap"><i class="bi bi-geo-alt-fill"></i></div>
         <div>
           <h4 class="contact-info-title">Address</h4>
-          <p>Jalandhar, Punjab, India</p>
+          <p>Ranchi, Jharkhand</p>
         </div>
       </div>
       <div class="contact-info-card">

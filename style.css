@@ -37,6 +37,70 @@ body {
 }
 
 /* ====================================================
+   CUSTOM CURSOR
+   ==================================================== */
+.cursor-dot {
+  position: fixed;
+  top: 0; left: 0;
+  width: 8px; height: 8px;
+  background: var(--accent);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 99999;
+  transform: translate(-50%, -50%);
+  transition: width 0.2s ease, height 0.2s ease, background 0.2s ease;
+}
+
+.cursor-ring {
+  position: fixed;
+  top: 0; left: 0;
+  width: 36px; height: 36px;
+  border: 2px solid rgba(255,74,23,0.45);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 99998;
+  transform: translate(-50%, -50%);
+  transition: width 0.25s ease, height 0.25s ease, border-color 0.25s ease, background 0.25s ease;
+}
+
+/* Hover state — grows and fills */
+.cursor-dot.cursor-hover {
+  width: 12px; height: 12px;
+  background: #fff;
+}
+
+.cursor-ring.cursor-hover {
+  width: 50px; height: 50px;
+  border-color: rgba(255,255,255,0.25);
+  background: rgba(255,74,23,0.08);
+}
+
+/* Click state */
+.cursor-dot.cursor-click {
+  transform: translate(-50%, -50%) scale(0.6);
+}
+
+.cursor-ring.cursor-click {
+  width: 28px; height: 28px;
+  border-color: var(--accent);
+}
+
+/* Hide custom cursor on touch / small screens */
+@media (pointer: coarse), (max-width: 768px) {
+  .cursor-dot,
+  .cursor-ring {
+    display: none !important;
+  }
+}
+
+/* Hide default cursor on hover-capable devices */
+@media (pointer: fine) {
+  *, *::before, *::after {
+    cursor: none !important;
+  }
+}
+
+/* ====================================================
    SCROLLBAR
    ==================================================== */
 ::-webkit-scrollbar { width: 6px; }
@@ -144,8 +208,7 @@ body {
   min-height: 600px;
   display: flex;
   align-items: center;
-  justify-content: flex-start;
-  text-align: left;
+  justify-content: center;
   overflow: hidden;
   background: #000;
 }
@@ -157,14 +220,26 @@ body {
   height: 100%;
 }
 
-.hero-content {
+.hero-inner {
   position: relative;
   z-index: 2;
+  max-width: 1200px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 clamp(30px, 6vw, 100px);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 60px;
+}
+
+.hero-content {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   gap: 18px;
-  padding-left: clamp(30px, 6vw, 100px);
+  flex: 1 1 0;
+  min-width: 0;
 }
 
 .hero-name {
@@ -257,6 +332,112 @@ body {
   background: var(--accent);
   border-color: var(--accent);
   transform: translateY(-3px);
+}
+
+/* Hero Profile Photo */
+.hero-photo {
+  flex-shrink: 0;
+  position: relative;
+  width: 300px;
+  height: 300px;
+  animation: fadeInRight 1s ease 0.3s both;
+}
+
+.hero-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+  border-radius: 50%;
+  border: 4px solid rgba(255,74,23,0.5);
+  box-shadow:
+    0 0 30px rgba(255,74,23,0.2),
+    0 0 60px rgba(255,74,23,0.1);
+  position: relative;
+  z-index: 2;
+  animation: heroFloat 4s ease-in-out infinite;
+}
+
+.hero-photo-glow {
+  position: absolute;
+  inset: -12px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255,74,23,0.15) 0%, transparent 70%);
+  z-index: 1;
+  animation: heroGlowPulse 3s ease-in-out infinite;
+}
+
+@keyframes heroFloat {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-12px); }
+}
+
+@keyframes heroGlowPulse {
+  0%, 100% { opacity: 0.6; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.06); }
+}
+
+@keyframes fadeInRight {
+  from { opacity:0; transform: translateX(40px); }
+  to { opacity:1; transform: translateX(0); }
+}
+
+/* Download CV Button (Hero) */
+.btn-download-cv {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 24px;
+  background: var(--accent);
+  color: #fff;
+  border: none;
+  border-radius: 50px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  font-family: var(--font-main);
+  text-decoration: none;
+  letter-spacing: 0.5px;
+  transition: background var(--transition), transform var(--transition), box-shadow var(--transition);
+  white-space: nowrap;
+}
+
+.btn-download-cv:hover {
+  background: #e0380a;
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px rgba(255,74,23,0.35);
+}
+
+/* Download CV Button (Resume Section) */
+.resume-download-wrap {
+  max-width: 1160px;
+  margin: 0 auto 36px;
+  padding: 0 30px;
+}
+
+.btn-download-cv-lg {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 36px;
+  background: linear-gradient(135deg, var(--accent) 0%, #e0380a 100%);
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  font-size: 0.95rem;
+  font-weight: 700;
+  font-family: var(--font-main);
+  text-decoration: none;
+  letter-spacing: 0.8px;
+  transition: background var(--transition), transform var(--transition), box-shadow var(--transition);
+}
+
+.btn-download-cv-lg:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 28px rgba(255,74,23,0.4);
+}
+
+.btn-download-cv-lg i {
+  font-size: 1.15rem;
 }
 
 /* ====================================================
@@ -885,6 +1066,11 @@ footer strong { color: #fff; }
   .contact-info-grid {
     grid-template-columns: 1fr;
   }
+
+  .hero-photo {
+    width: 250px;
+    height: 250px;
+  }
 }
 
 @media (max-width: 768px) {
@@ -911,6 +1097,29 @@ footer strong { color: #fff; }
     display: block;
     padding: 14px;
     font-size: 1rem;
+  }
+
+  .hero-inner {
+    flex-direction: column-reverse;
+    gap: 30px;
+    text-align: center;
+  }
+
+  .hero-content {
+    align-items: center;
+  }
+
+  .hero-nav {
+    justify-content: center;
+  }
+
+  .hero-socials {
+    justify-content: center;
+  }
+
+  .hero-photo {
+    width: 200px;
+    height: 200px;
   }
 
   .about-container {

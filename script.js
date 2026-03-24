@@ -1,6 +1,7 @@
 /* ====================================================
    PORTFOLIO - script.js
    Features:
+     - Custom cursor animation
      - Particle network animation (Canvas)
      - Typing effect
      - Skill bar animation on scroll
@@ -9,6 +10,76 @@
      - Active nav link tracking
      - Hamburger menu
    ==================================================== */
+
+/* ── 0. CUSTOM CURSOR ───────────────────────────── */
+(function initCursor() {
+  const dot  = document.getElementById('cursor-dot');
+  const ring = document.getElementById('cursor-ring');
+  if (!dot || !ring) return;
+
+  // Only enable on devices with a fine pointer (mouse)
+  if (!window.matchMedia('(pointer: fine)').matches) return;
+
+  let mouseX = -100, mouseY = -100;
+  let ringX  = -100, ringY  = -100;
+
+  // Track mouse position
+  document.addEventListener('mousemove', (e) => {
+    mouseX = e.clientX;
+    mouseY = e.clientY;
+
+    // Dot follows instantly
+    dot.style.left = mouseX + 'px';
+    dot.style.top  = mouseY + 'px';
+  });
+
+  // Ring follows with smooth lerp
+  function animateRing() {
+    const ease = 0.15;
+    ringX += (mouseX - ringX) * ease;
+    ringY += (mouseY - ringY) * ease;
+
+    ring.style.left = ringX + 'px';
+    ring.style.top  = ringY + 'px';
+
+    requestAnimationFrame(animateRing);
+  }
+  animateRing();
+
+  // Hover state on interactive elements
+  const hoverTargets = 'a, button, input, textarea, .filter-btn, .interest-card, .project-card, .social-btn, .btn-download-cv, .btn-download-cv-lg, .btn-send';
+
+  document.querySelectorAll(hoverTargets).forEach(el => {
+    el.addEventListener('mouseenter', () => {
+      dot.classList.add('cursor-hover');
+      ring.classList.add('cursor-hover');
+    });
+    el.addEventListener('mouseleave', () => {
+      dot.classList.remove('cursor-hover');
+      ring.classList.remove('cursor-hover');
+    });
+  });
+
+  // Click animation
+  document.addEventListener('mousedown', () => {
+    dot.classList.add('cursor-click');
+    ring.classList.add('cursor-click');
+  });
+  document.addEventListener('mouseup', () => {
+    dot.classList.remove('cursor-click');
+    ring.classList.remove('cursor-click');
+  });
+
+  // Hide cursor when leaving the window
+  document.addEventListener('mouseleave', () => {
+    dot.style.opacity = '0';
+    ring.style.opacity = '0';
+  });
+  document.addEventListener('mouseenter', () => {
+    dot.style.opacity = '1';
+    ring.style.opacity = '1';
+  });
+})();
 
 /* ── 1. PARTICLES ────────────────────────────────── */
 (function initParticles() {
@@ -90,7 +161,7 @@
   const el = document.getElementById('typed-text');
   const strings = [
     'Machine Learning Engineer',
-    'Full-Stack Developer',
+    'Backend & API Developer',
     'AI Solutions Builder',
     'Deep Learning Enthusiast',
     'Python Developer',
