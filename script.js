@@ -160,6 +160,7 @@
 (function initTyped() {
   const el = document.getElementById('typed-text');
   const strings = [
+    'AI Engineer',
     'Machine Learning Engineer',
     'Backend & API Developer',
     'AI Solutions Builder',
